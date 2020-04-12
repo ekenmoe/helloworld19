@@ -7,17 +7,17 @@ pipeline {
       stage('Build'){
         steps {
           echo "Build step"
-          sh 'mvn clean
+          sh 'mvn clean'
           sh 'mvn install'
           sh 'mvn package'
         }
       
- 
+      
       }
         stage('test '){
         steps {
           echo "test step"
-          sleep 5
+          sh 'mvn test'
         }
       
       
