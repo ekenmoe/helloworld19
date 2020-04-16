@@ -36,7 +36,9 @@ docker build -t holliday:2.0 .;
 docker tag holliday:2.0 ekenmoe/holliday:2.0 ;
 docker push ekenmoe/holliday:2.0
 ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: '**/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-        }
+            }
+        
+       }
   
     }
     
