@@ -1,32 +1,29 @@
 pipeline {
-    agent any
-    triggers {
-        cron( 'H/1 * * * *' )
-    }
-    tools {
-        maven 'M2_HOME'
-      
-    }
+    
+    agent any 
+    
     stages {
-      stage('Build'){
-        steps {
-          echo "Build step"
-          sh 'mvn clean'
-          sh 'mvn install'
-          sh 'mvn package'
-        }
-      
-      
-      }
-        stage('test '){
-        steps {
-            retry(4){
-          echo  "test step"
+        
+        stage("Build") {
+            
+            steps {
+            echo 'Building the application.....'
             }
-          sh 'mvn test'
         }
-      
-      
-      }
+        
+        stage("Test") {
+            
+            steps {
+            echo 'Testing the application......'
+            }
+        }
+   stage("Deploy") {
+            
+            steps {
+            echo 'Deploy the application......'
+            }
+        }
+    
     }
+   
 }
