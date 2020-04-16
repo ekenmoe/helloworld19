@@ -35,13 +35,5 @@ pipeline {
         }
   
     }
-    post {
-        always {
-        echo 'sent email to all team member ....'
-        }
-        failure {
-        echo 'sent report email to both ops and dev team....'
-        }
-        
-    }
+    
 }
