@@ -31,8 +31,11 @@ pipeline {
             
             steps {
                 echo 'deploying the application......'
-                deploy adapters: [tomcat8(credentialsId: 'TomcatID', path: '', url: 'http://34.228.39.56:8080/')], contextPath: null, war: '**/*.war'
-            }
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'docker-host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker rmi holliday:2.0 -f; 
+docker build -t holliday:2.0 .; 
+docker tag holliday:2.0 ekenmoe/holliday:2.0 ;
+docker push ekenmoe/holliday:2.0
+''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: '**/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
         }
   
     }
