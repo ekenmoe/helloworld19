@@ -7,6 +7,11 @@ pipeline {
         stage("Build") {
             
             steps {
+                when {
+                    expression {
+                    BRANCH_NAME == 'master' && CODE_CHANGE == true
+                    }
+                }
             echo 'Building the application.....'
             }
         }
@@ -14,6 +19,11 @@ pipeline {
         stage("Test") {
             
             steps {
+                when {
+                    expression {
+                    BRANCH_NAME == 'master' || BRANCH_NAME == 'request'
+                    }
+                }
             echo 'Testing the application......'
             }
         }
@@ -23,7 +33,15 @@ pipeline {
             echo 'Deploy the application......'
             }
         }
-    
+  
     }
-   
+    post {
+        always {
+        // 
+        }
+        failure {
+        //
+        }
+        
+    }
 }
