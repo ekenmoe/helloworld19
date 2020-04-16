@@ -24,12 +24,14 @@ pipeline {
             steps {
                 
             echo 'Testing the application......'
+                sh 'mvn test'
             }
         }
    stage("Deploy") {
             
             steps {
             echo 'Deploy the application......'
+                build 'contactpage_ci'
             }
         }
   
