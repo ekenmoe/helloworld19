@@ -30,8 +30,8 @@ pipeline {
    stage("Deploy") {
             
             steps {
-            echo 'Deploy the application......'
-                build 'contactpage_ci'
+                echo 'deploying the application......'
+                deploy adapters: [tomcat8(credentialsId: 'TomcatID', path: '', url: 'http://34.228.39.56:8080/')], contextPath: null, war: '**/*.war'
             }
         }
   
